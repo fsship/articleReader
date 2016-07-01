@@ -1,0 +1,47 @@
+<style>
+    body {
+        overflow: auto;
+    }
+
+    .articleReader-reader {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 50px;
+        overflow: hidden;
+    }
+
+    .articleReader-paging {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .articleReader-paging a {
+        background-color: green;
+        color: white;
+        text-decoration: none;
+        min-width: 30px;
+        margin: 2px;
+        padding: 2px;
+    }
+
+    .articleReader-paging a, ul, li {
+        display: inline-block;
+        height: 30px;
+        line-height: 30px;
+        vertical-align: top;
+    }
+</style>
+<div class="articleReader-reader" id="articleReader-reader"></div>
+<div class="articleReader-paging" id="articleReader-paging">
+    <a id="pageUp" href="#">上一页</a>
+    <ul id="pages"></ul>
+    <a id="pageDown" href="#">下一页</a>
+</div>

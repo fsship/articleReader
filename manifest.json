@@ -1,0 +1,20 @@
+{
+    "manifest_version": 2,
+    "name": "Article Reader",
+    "version": "0.1",
+    "description": "Shanbay homework",
+    "browser_action": {
+        "default_icon": "icon.png"
+    },
+    "permissions": [
+        "http://www.theguardian.com/"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["http://www.theguardian.com/*", "https://www.theguardian.com/*"],
+            "js": ["scripts/dictionary.js", "scripts/reader.js", "scripts/run.js"],
+            "run_at": "document_idle"
+        }
+    ],
+    "web_accessible_resources": ["html/page.html"]
+}
