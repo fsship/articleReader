@@ -24,8 +24,9 @@
     }
 
     .articleReader-paging a {
-        background-color: green;
-        color: white;
+        background-color: white;
+        color: black;
+        border: solid 1px green;
         text-decoration: none;
         min-width: 30px;
         margin: 2px;
@@ -36,11 +37,21 @@
         margin: 0;
     }
 
-    .articleReader-paging a, ul, li {
+    .articleReader-paging a, .articleReader-paging ul, .articleReader-paging li {
         display: inline-block;
         height: 30px;
         line-height: 30px;
         vertical-align: top;
+    }
+
+    .paging-active {
+        background: green!important;
+        color: white!important;
+    }
+
+    .paging-disabled {
+        color: gray!important;
+        border: solid 1px gray!important;
     }
 </style>
 <div class="articleReader-reader" id="articleReader-reader"></div>

@@ -1,6 +1,13 @@
 (function() {
     'use strict';
 
+    function removeClass(className) {
+        let elements = document.getElementsByClassName(className);
+        for (let i = 0; i < elements.length;i++) {
+            elements[i].classList.remove(className);
+        }
+    }
+
     function Reader(article) {
         //document.body.appendChild(article);
         this.currentPage = 1;
@@ -27,6 +34,12 @@
             if (page > 0) {
                 this.setPage(page);
             }
+            if (e.target.id === 'pageUp' && this.currentPage > 1) {
+                this.setPage(this.currentPage - 1);
+            }
+            if (e.target.id === 'pageDown' && this.currentPage < this.maxPage) {
+                this.setPage(this.currentPage + 1);
+            }
         });
     }
 
@@ -51,6 +64,16 @@
         this.currentPage = page;
         let newLeft = -(page - 1) * (this.readerElement.clientWidth);
         this.article.style.left = newLeft + 'px';
+        removeClass('paging-active');
+        removeClass('paging-disabled');
+        let pages = document.getElementById('pages');
+        pages.childNodes[page-1].firstChild.classList.add('paging-active');
+        if (page === this.maxPage) {
+            document.getElementById('pageDown').classList.add('paging-disabled');
+        }
+        if (page === 1) {
+            document.getElementById('pageUp').classList.add('paging-disabled');
+        }
     };
 
     window.Reader = Reader;

@@ -10,7 +10,6 @@
     document.body.innerHTML = '';
 
     let classToRemove = ['content__secondary-column', 'content__meta-container', 'submeta', 'ad-slot', 'element-rich-link'];
-    //let classToRemove = [];
     classToRemove.forEach((className) => {
         let theElement = theArticle.getElementsByClassName(className)[0];
         if (theElement) {
@@ -18,6 +17,12 @@
         }
     });
 
+    let frams = Array.prototype.slice.call(document.getElementsByTagName('iframe'));
+    frams.forEach((element) => {
+        element.remove();
+    });
+
     let reader = new Reader(theArticle);
+    let dict = new Dict(theArticle);
     window.reader = reader;
 })();
