@@ -42,6 +42,11 @@
                 this.setPage(this.currentPage + 1);
             }
         });
+
+        window.addEventListener('resize', () => {
+            this.setPageWidth();
+            this.setPage(1);
+        });
     }
 
     Reader.prototype.setPageWidth = function() {
