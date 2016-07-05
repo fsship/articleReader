@@ -43,6 +43,13 @@
             }
         });
 
+        this.readerElement.addEventListener('DOMNodeInserted', (e) => {
+            if (e.target.classList.contains('ad-slot')) {
+                console.log('ad found');
+                e.target.remove();
+            }
+        });
+
         window.addEventListener('resize', () => {
             this.setPageWidth();
             this.setPage(1);
