@@ -30,15 +30,17 @@
             if (xhr.readyState === 4 && xhr.status === 200) {
                 let data = JSON.parse(xhr.responseText);
                 let content;
+                let display = 'block';
                 if (data.status_code === 0) {
                     content = data.data.definition.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + '<br/>' + '$2');
                     that.audio = new Audio(data.data.audio);
                 } else {
                     content = data.msg;
+                    display = 'none';
                 }
                 that.element.innerHTML = `
                     <h4>${word}</h4>
-                    <img id="audioPlay" src="${soundImg}" alt=""/>
+                    <img id="audioPlay" src="${soundImg}" alt="" style="display: ${display}"/>
                     <p>${content}</p>
                     <a href="#" id="close">关闭</a>
                 `;
@@ -85,7 +87,8 @@
             while((re.test(range.toString()) || range.toString() === '') && range.startOffset > 0) {
                 range.setStart(node, (range.startOffset - 1));
             }
-            if (range.startOffset) {
+            if (range.startOffset || !re.test(range.toString())) {
+                console.log('fired');
                 range.setStart(node, range.startOffset + 1);
             }
             do{
@@ -93,6 +96,9 @@
             } while(re.test(range.toString()) && range.toString().trim() != '');
             range.setEnd(node, range.endOffset - 1);
             let word = range.toString().trim();
+            if (!re.test(word)) {
+                return ;
+            }
             this.card.showWord(word, {x: e.pageX, y: e.pageY});
         });
     }
