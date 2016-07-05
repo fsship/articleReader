@@ -7,7 +7,9 @@
         "default_icon": "icon.png"
     },
     "permissions": [
-        "http://www.theguardian.com/"
+        "http://www.theguardian.com/",
+        "https://www.theguardian.com/",
+        "https://api.shanbay.com/"
     ],
     "content_scripts": [
         {
@@ -16,5 +18,5 @@
             "run_at": "document_idle"
         }
     ],
-    "web_accessible_resources": ["html/page.html"]
+    "web_accessible_resources": ["html/page.html", "css/card.css", "icon/sound.png"]
 }

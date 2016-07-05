@@ -1,0 +1,12 @@
+.articleReader-card {
+    width: 200px;
+    overflow: auto;
+    background: wheat;
+    z-index: 999;
+    position: absolute;
+}
+
+.articleReader-card img {
+    width: 20px;
+    height: 20px;
+}

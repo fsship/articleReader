@@ -9,10 +9,10 @@
     }
 
     function Reader(article) {
-        //document.body.appendChild(article);
         this.currentPage = 1;
         this.maxPage = 1;
         this.article = article;
+        this.dict = '';
 
         let xhr = new XMLHttpRequest();
         xhr.open('GET', chrome.extension.getURL('html/page.html'), false);
@@ -30,6 +30,7 @@
         this.setPageWidth();
 
         this.pagingElement.addEventListener('click', (e) => {
+            this.dict.card.close();
             let page = parseInt(e.target.innerHTML);
             if (page > 0) {
                 this.setPage(page);
@@ -47,6 +48,7 @@
         this.article.style.columnWidth = this.readerElement.clientWidth + 'px';
         this.article.style.columnGap = '0';
         this.maxPage = Math.ceil(this.articleEndMarker.offsetLeft/this.readerElement.clientWidth) + 1;
+        console.log(this.maxPage);
         let pages = document.getElementById('pages');
         pages.innerHTML = '';
         let pageElements = '';
@@ -74,6 +76,10 @@
         if (page === 1) {
             document.getElementById('pageUp').classList.add('paging-disabled');
         }
+    };
+
+    Reader.prototype.setDict = function(dict) {
+        this.dict = dict;
     };
 
     window.Reader = Reader;

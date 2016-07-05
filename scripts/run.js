@@ -9,7 +9,7 @@
     const theArticle = articles[0];
     document.body.innerHTML = '';
 
-    let classToRemove = ['content__secondary-column', 'content__meta-container', 'submeta', 'ad-slot', 'element-rich-link'];
+    let classToRemove = ['content__secondary-column', 'content__meta-container', 'submeta', 'ad-slot', 'js-ad-slot', 'element-rich-link'];
     classToRemove.forEach((className) => {
         let theElement = theArticle.getElementsByClassName(className)[0];
         if (theElement) {
@@ -24,5 +24,5 @@
 
     let reader = new Reader(theArticle);
     let dict = new Dict(theArticle);
-    window.reader = reader;
+    reader.setDict(dict);
 })();
